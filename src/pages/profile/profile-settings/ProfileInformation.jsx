@@ -5,6 +5,7 @@ import ChangeDisplayName from './ChangeDisplayName';
 
 import '../profile.scss';
 import ChangeEmail from './ChangeEmail';
+import ChangePassword from './ChangePassword';
 
 
 const ProfileInformation = ({ profileData }) => {
@@ -22,6 +23,7 @@ const ProfileInformation = ({ profileData }) => {
      </div>
      <ChangeEmail profile={profile} />
      <ChangeDisplayName profile={profile} />
+     <ChangePassword profile={profile} />
     </div>
    )
   })}</div>
