@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { db } from '../firebase/config'
 import { collection, getDocs } from 'firebase/firestore'
+import VerifyEmail from './auth/VerifyEmail'
 
 const Home = () => {
   const [books, setBooks] = useState(null)
@@ -21,6 +22,7 @@ const Home = () => {
 
   return (
     <div className='page'>
+      <VerifyEmail />
     </div>
   )
 }

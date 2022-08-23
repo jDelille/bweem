@@ -28,6 +28,7 @@ const Router = () => {
 
 				<Routes>
 					<Route exact path='/' element={<Home />}></Route>
+					
 					<Route path='/profile' element={user && <Profile />}></Route>
 					{/* <Route path='/signup' element={!user && <Signup />}></Route>
 					<Route path='/login' element={!user && <Login />}></Route> */}
