@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 // firebase imports
-import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore'
+import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase/config'
 
 const ChangeDisplayName = () => {
@@ -30,9 +30,9 @@ const ChangeDisplayName = () => {
      return setTakenNames(takenArr)
     })
    })
+
   getDocs(collection(db, 'users'))
    .then((snapshot) => {
-
     snapshot.docs.forEach(doc => {
      if (doc.id === user.uid)
       setCurrUser(doc.data().displayName)
@@ -41,13 +41,9 @@ const ChangeDisplayName = () => {
    })
  }, [])
 
- console.log(currUser)
-
-
-
-
  const changeDisplayName = () => {
 
+  // check if name is same as current name
   if (displayName === currUser) return setErrorMsg("You already have this display name.")
 
   // check if name is taken
@@ -56,18 +52,12 @@ const ChangeDisplayName = () => {
   // check if name is less than 15 characters
   if (displayName.length > 15) return setErrorMsg('You must make your display name less than 15 characters.')
 
-  // check if name is same as current name
-
-
   updateDoc(userRef, {
    displayName: displayName
   })
 
   setErrorMsg(null)
  }
-
-
-
 
  return (
   <div>
