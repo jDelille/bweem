@@ -5,6 +5,8 @@ import './profile.scss';
 import { db } from '../../firebase/config';
 import { collection, getDocs } from 'firebase/firestore';
 import { useAuthContext } from '../../hooks/useAuthContext';
+import VerifyEmail from '../auth/VerifyEmail';
+import ChangeDisplayName from '../auth/ChangeDisplayName';
 
 
 const Profile = () => {
@@ -38,6 +40,8 @@ const Profile = () => {
           <div>
             <p>{profile.displayName}</p>
             <p>{profile.email}</p>
+            <VerifyEmail />
+            <ChangeDisplayName />
           </div>
         )
       })}

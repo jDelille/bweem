@@ -37,8 +37,8 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // check if displayName length is greater than 25
-    if (displayName.length > 25) return setErrorMsg('You cannot make your display name more than 25 characters.')
+    // check if displayName length is greater than 15
+    if (displayName.length > 15) return setErrorMsg('You cannot make your display name more than 25 characters.')
 
     // check if password and passwordConfirm match
     if (password !== passwordConfirm) return setErrorMsg("Your passwords don't match.")

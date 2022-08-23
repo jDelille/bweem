@@ -20,7 +20,12 @@ export const useSignup = () => {
 				// document
 				const documentId = uid;
 				// fields
-				const value = { id: uid, displayName: displayName, email: email };
+				const value = {
+					id: uid,
+					displayName: displayName,
+					email: email,
+					verified: false,
+				};
 				setDoc(doc(db, collectionId, documentId), value);
 
 				dispatch({ type: 'LOGIN', payload: res.user });
