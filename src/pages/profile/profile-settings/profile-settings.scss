@@ -1,0 +1,33 @@
+.delete-account {
+	background-color: #f8d7da;
+	color: #9d1c24;
+	width: fit-content;
+	padding: 1rem;
+	margin-top: 1rem;
+	border-radius: 5px;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.delete-modal {
+	height: fit-content;
+	border-radius: 5px;
+
+	.title {
+		height: 40px;
+		margin-top: 1.5rem;
+	}
+}
+.delete {
+	background-color: #f8d7da;
+	color: #9d1c24;
+	width: fit-content;
+	padding: 1rem;
+	cursor: pointer;
+	width: 100%;
+	text-align: center;
+	text-decoration: underline;
+	border-radius: 5px;
+}
+.close {
+	height: 40px;
+}

@@ -1,10 +1,10 @@
 import React from 'react'
-import { useAuthContext } from '../../hooks/useAuthContext'
+import { useAuthContext } from '../../../hooks/useAuthContext'
 
 // firebase imports
 import { sendEmailVerification } from 'firebase/auth'
 import { doc, updateDoc } from 'firebase/firestore'
-import { db } from '../../firebase/config'
+import { db } from '../../../firebase/config'
 
 
 const VerifyEmail = () => {

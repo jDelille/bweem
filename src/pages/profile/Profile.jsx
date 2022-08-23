@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { MdModeEditOutline } from 'react-icons/md'
+import { useAuthContext } from '../../hooks/useAuthContext';
+import ProfileInformation from './profile-settings/ProfileInformation';
 import './profile.scss';
 
 // firebase imports
 import { db } from '../../firebase/config';
 import { collection, getDocs } from 'firebase/firestore';
-import { useAuthContext } from '../../hooks/useAuthContext';
-import VerifyEmail from '../auth/VerifyEmail';
-import ChangeDisplayName from '../auth/ChangeDisplayName';
+import ProfileDelete from './profile-settings/ProfileDelete';
+
 
 
 const Profile = () => {
@@ -17,7 +17,6 @@ const Profile = () => {
 
   // get the existing display names.
   useEffect(() => {
-
     getDocs(collection(db, 'users'))
       .then((snapshot) => {
         let users = [];
@@ -33,6 +32,7 @@ const Profile = () => {
       })
   }, [])
 
+
   return (
     <div className='page'>
       <div className="profile">
@@ -42,39 +42,10 @@ const Profile = () => {
         </div>
 
         <div className="information">
-          {profileData.map(profile => {
-            return (
-              <div className='information-content'>
-                {profile.verfied === false && (
-                  <div>
-                    <VerifyEmail />
-                  </div>
-                )}
-                <div>
-                  <span className='label'>Account Email</span>
-                  <p>{profile.email}</p>
-                  <span className="edit">
-                    <MdModeEditOutline className='edit-icon' />
-                  </span>
-
-                </div>
-                <div>
-                  <span className='label'>Display Name</span>
-                  <p>{profile.displayName}</p>
-                  <span className='edit'>
-                    <MdModeEditOutline className='edit-icon' />
-                  </span>
-
-                </div>
-                {/* <ChangeDisplayName /> */}
-              </div>
-            )
-          })}
+          <ProfileInformation profileData={profileData} />
         </div>
 
-        <div className="delete-account">
-          <p>Delete my account and data</p>
-        </div>
+        <ProfileDelete user={user} />
       </div>
 
 

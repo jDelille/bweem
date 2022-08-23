@@ -2,7 +2,7 @@ import { sendPasswordResetEmail } from 'firebase/auth';
 import { useState } from 'react'
 
 // firebase imports
-import { auth } from '../../firebase/config';
+import { auth } from '../../../firebase/config';
 
 const ResetPassword = () => {
   const [email, setEmail] = useState('')
