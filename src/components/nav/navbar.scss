@@ -1,0 +1,48 @@
+@import '../../styles/variables.scss';
+
+nav {
+	height: 65px;
+	background-color: var(--primary);
+	color: white;
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	padding: 0 12rem;
+	.links {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		li {
+			a {
+				text-decoration: none;
+				color: white;
+				padding: 0.55rem 1rem;
+				border-radius: 5px;
+			}
+			a.active {
+				background-color: var(--secondary);
+			}
+		}
+	}
+	.user-settings {
+		margin-left: auto;
+		list-style-type: none;
+		font-size: 1.3rem;
+		cursor: pointer;
+		position: relative;
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
+}
+
+.settings {
+	background-color: var(--secondary);
+	padding: 1rem;
+	border-radius: 5px;
+	position: absolute;
+	top: 65px;
+	right: 0;
+	font-size: 1rem;
+	width: 200px;
+}
