@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useLogout } from '../../../hooks/useLogout';
+import { useLogout } from '../../hooks/useLogout';
 import './profile-settings.scss';
 
 // firebase imports
-import { db } from '../../../firebase/config';
+import { db } from '../../firebase/config';
 import { doc, deleteDoc } from 'firebase/firestore';
 
 const ProfileDelete = ({ user }) => {
@@ -26,7 +26,7 @@ const ProfileDelete = ({ user }) => {
    {verifyDelete && (
     <>
      <div className="overlay"></div>
-     <div className="modal delete-modal">
+     <div className="modal delete-modal secondary">
       <p className="close" onClick={() => setVerifyDelete(false)}> X </p>
       <p className='title'> Are you sure you want to delete your account? </p>
       <p className="delete" onClick={deleteAccount} >Delete my account</p>

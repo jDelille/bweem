@@ -1,20 +1,22 @@
 .profile {
-	color: white;
 	.header {
 		height: fit-content;
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;
+		align-items: center;
 	}
 	.information {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
+
 		.information-content {
 			display: flex;
 			flex-direction: column;
 			gap: 1rem;
-			div {
+			align-items: center;
+			.setting-option {
 				display: flex;
 				gap: 1rem;
 				width: 50%;
@@ -22,8 +24,10 @@
 				padding: 1rem;
 				font-size: 1.2rem;
 				border-radius: 5px;
+				align-items: center;
 				.label {
 					font-weight: 600;
+					width: 20%;
 				}
 				.edit {
 					margin-left: auto;
@@ -33,6 +37,7 @@
 					display: flex;
 					align-items: center;
 					justify-content: center;
+					color: white;
 					cursor: pointer;
 				}
 				.edit-icon {

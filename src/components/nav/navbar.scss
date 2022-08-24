@@ -2,8 +2,6 @@
 
 nav {
 	height: 65px;
-	background-color: var(--primary);
-	color: white;
 	display: flex;
 	align-items: center;
 	gap: 2rem;
@@ -12,15 +10,30 @@ nav {
 		display: flex;
 		gap: 1rem;
 		align-items: center;
+		width: 100%;
 		li {
 			a {
 				text-decoration: none;
-				color: white;
 				padding: 0.55rem 1rem;
 				border-radius: 5px;
 			}
-			a.active {
-				background-color: var(--secondary);
+		}
+		.user-auth {
+			margin-left: auto;
+			display: flex;
+			gap: 1rem;
+			li {
+				cursor: pointer;
+				p {
+					height: 100%;
+					display: flex;
+					align-items: center;
+				}
+				.signup-btn {
+					background-color: var(--accent);
+					padding: 0.5rem;
+					border-radius: 5px;
+				}
 			}
 		}
 	}
@@ -33,16 +46,64 @@ nav {
 		height: 100%;
 		display: flex;
 		align-items: center;
+		.dark-mode {
+			display: flex;
+			align-items: center;
+			.pill {
+				width: 40px;
+				height: 20px;
+				border-radius: 25px;
+				padding: 0.25rem;
+				display: flex;
+				align-items: center;
+				position: relative;
+				margin-left: auto;
+				.switch-on,
+				.switch-off {
+					background-color: #fff;
+					width: 14px;
+					height: 14px;
+					border-radius: 50%;
+					transition: all 200ms ease-in-out;
+				}
+				.switch-off {
+					transform: translateX(18px);
+					transition: all 200ms ease-in-out;
+				}
+			}
+		}
 	}
 }
 
 .settings {
-	background-color: var(--secondary);
 	padding: 1rem;
 	border-radius: 5px;
 	position: absolute;
-	top: 65px;
+	top: 75px;
 	right: 0;
 	font-size: 1rem;
 	width: 200px;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		li {
+			display: flex;
+			align-items: center;
+			gap: 0.25rem;
+			a {
+				display: flex;
+				align-items: center;
+				gap: 0.25rem;
+			}
+		}
+		.icon {
+			height: 100%;
+			display: flex;
+			align-items: center;
+		}
+	}
 }

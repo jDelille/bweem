@@ -1,9 +1,8 @@
 import React from 'react'
-import { MdModeEditOutline } from 'react-icons/md'
 import VerifyEmail from './VerifyEmail';
 import ChangeDisplayName from './ChangeDisplayName';
 
-import '../profile.scss';
+import '../../pages/profile/profile.scss';
 import ChangeEmail from './ChangeEmail';
 import ChangePassword from './ChangePassword';
 

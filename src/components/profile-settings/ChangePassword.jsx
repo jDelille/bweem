@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useAuthContext } from '../../../hooks/useAuthContext';
+import React, { useState } from 'react'
+import { useAuthContext } from '../../hooks/useAuthContext';
 import './profile-settings.scss';
-import '../profile.scss';
+import '../../pages/profile/profile.scss';
 
 // firebase imports
-import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 import { updatePassword } from 'firebase/auth';
-import { db } from '../../../firebase/config'
 import { MdModeEditOutline } from 'react-icons/md';
 
 const ChangePassword = ({ profile }) => {
@@ -30,7 +28,7 @@ const ChangePassword = ({ profile }) => {
 
  return (
   <>
-   <div>
+   <div className='secondary setting-option'>
     <span className='label'>Password</span>
     <p>•••••••••••</p>
     <span className='edit' onClick={() => setChangePassword(true)}>
@@ -40,11 +38,11 @@ const ChangePassword = ({ profile }) => {
    {changePassword && (
     <>
      <div className="overlay"></div>
-     <div className='modal'>
+     <div className='modal secondary'>
       <p className="close" onClick={() => setChangePassword(false)}> X </p>
       <h1> Change your password </h1>
       {errorMsg && <p className='error'>{errorMsg}</p>}
-      <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder='•••••••••••' />
+      <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder='•••••••••••' className='primary' />
       <button onClick={changeAccountPassword} className='btn'>Change Password</button>
      </div>
     </>

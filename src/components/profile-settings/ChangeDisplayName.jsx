@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useAuthContext } from '../../../hooks/useAuthContext';
+import { useAuthContext } from '../../hooks/useAuthContext';
 import './profile-settings.scss';
-import '../profile.scss';
+import '../../pages/profile/profile.scss';
 
 // firebase imports
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
-import { db } from '../../../firebase/config'
+import { db } from '../../firebase/config'
 import { MdModeEditOutline } from 'react-icons/md';
 
 const ChangeDisplayName = ({ profile }) => {
   const [displayName, setDisplayName] = useState("")
   const [takenNames, setTakenNames] = useState([])
   const [errorMsg, setErrorMsg] = useState(null)
+  const [successMsg, setSuccessMsg] = useState(null)
   const [currUser, setCurrUser] = useState([])
   const [changeName, setChangeName] = useState(false)
 
@@ -45,6 +46,8 @@ const ChangeDisplayName = ({ profile }) => {
       })
   }, [])
 
+  console.log(displayName)
+
   const changeDisplayName = () => {
 
     // check if name is same as current name
@@ -62,29 +65,51 @@ const ChangeDisplayName = ({ profile }) => {
 
     updateDoc(userRef, {
       displayName: displayName
+    }).then(() => {
+      setSuccessMsg('Display Name change successful!')
+
+      setTimeout(() => {
+        setSuccessMsg(null)
+        setChangeName(false)
+      }, 2000)
+
+      setErrorMsg(null)
+    }).catch((error) => {
+      setErrorMsg(error.message)
     })
 
-    setErrorMsg(null)
   }
 
   return (
     <>
-      <div>
+      <div className='secondary setting-option'>
         <span className='label'>Display Name</span>
         <p>{profile.displayName}</p>
         <span className='edit' onClick={() => setChangeName(true)}>
           <MdModeEditOutline className='edit-icon' />
         </span>
       </div>
+
       {changeName && (
         <>
           <div className="overlay"></div>
-          <div className='modal'>
-            <p className="close" onClick={() => setChangeName(false)}> X </p>
-            <h1> Change your display name </h1>
-            {errorMsg && <p className='error'>{errorMsg}</p>}
-            <input type="text" onChange={(e) => setDisplayName(e.target.value)} placeholder={profile.displayName} />
-            <button onClick={changeDisplayName} className='btn'>Update Display Name</button>
+          <div className='modal secondary'>
+            {successMsg && (
+              <>
+                <p className="close" onClick={() => setChangeName(false)}> X </p>
+                <h1 className='success-msg'>{successMsg}</h1>
+              </>
+            )}
+            {!successMsg && (
+              <>
+                <p className="close" onClick={() => setChangeName(false)}> X </p>
+                <h1> Change your display name </h1>
+                {errorMsg && <p className='error'>{errorMsg}</p>}
+                <input type="text" onChange={(e) => setDisplayName(e.target.value)} placeholder={profile.displayName} className="primary" />
+                <button onClick={changeDisplayName} className='btn'>Update Display Name</button>
+              </>
+            )}
+
           </div>
         </>
       )}

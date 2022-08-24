@@ -20,7 +20,7 @@ const Home = () => {
 
 
   return (
-    <div className='page'>
+    <div className='page primary'>
 
     </div>
   )

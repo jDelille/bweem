@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useSignup } from '../../hooks/useSignup'
 import './auth.scss';
+import { AiFillGoogleCircle, AiFillGithub } from 'react-icons/ai'
+import { RiLinkedinFill } from 'react-icons/ri'
 
 // firebase imports
 import { collection, getDocs } from 'firebase/firestore'
 import { db } from '../../firebase/config'
+
 
 
 const Signup = ({ setShowSignup, setShowLogin }) => {
@@ -16,6 +19,8 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
   const [takenNames, setTakenNames] = useState([])
 
   const { error, signup } = useSignup();
+
+
 
   // get the existing display names.
   useEffect(() => {
@@ -62,21 +67,38 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
   return (
     <>
       <div className="overlay"></div>
-      <div className='modal'>
-        <h1> Signup </h1>
+      <div className='modal secondary'>
+        <div className="modal-header">
+          <img src="../images/logo.jpg" alt="" />
+          <h1> Bweem </h1>
+        </div>
         <div className="close" onClick={() => setShowSignup(false)}>X</div>
         {error && <p className='error'>{error}</p>}
         {errorMsg && <p className='error'>{errorMsg} <span onClick={closeError}>X</span></p>}
 
         <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
-          <input type="text" placeholder="Username" onChange={(e) => setDisplayName(e.target.value)} required />
-          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
-          <input type="password" placeholder="Password Confirm" onChange={(e) => setPasswordConfirm(e.target.value)} required />
+
+          <input type="text" placeholder="Username" onChange={(e) => setDisplayName(e.target.value)} required className='secondary' />
+          <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required className='secondary' />
+          <input type="password" placeholder="Confirm Password" onChange={(e) => setPasswordConfirm(e.target.value)} required className='secondary' />
+          <input type="email" placeholder="E-mail address" onChange={(e) => setEmail(e.target.value)} required className='secondary' />
           <button> Sign Up </button>
         </form>
 
-        <p className='redirect'>Already have an account? <span onClick={redirectLogin}>Login</span></p>
+        <div className='redirect-signup'><p>Have an account? </p>     <span onClick={redirectLogin}> Sign In</span></div>
+
+        <div className="alternate-login">
+          <p>or you can sign in with</p>
+          <div className="icons">
+            <AiFillGoogleCircle className='icon' />
+            <AiFillGithub className='icon' />
+            <RiLinkedinFill className='icon' />
+          </div>
+        </div>
+
+        <div className="disclaimer">
+          <p>This site is protected by reCAPTCHA and the Google <span>Privacy Policy</span> and <span>Terms of Service</span> apply.</p>
+        </div>
 
       </div>
     </>
