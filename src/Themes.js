@@ -34,6 +34,9 @@ export const GlobalStyles = createGlobalStyle`
 	color: ${(props) => props.theme.font};
 
 }
+.arrow-color {
+	color: ${(props) => props.theme.secondaryBG};
+}
 .pill {
 	background-color: ${(props) => props.theme.togglePill};
 

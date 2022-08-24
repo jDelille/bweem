@@ -22,6 +22,6 @@ input {
 }
 
 .page {
-	height: 100vh;
+	height: calc(100vh - 65px);
 	padding-top: 2rem;
 }

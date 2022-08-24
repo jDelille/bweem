@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '../../hooks/useAuthContext';
-import { FaUserCircle } from 'react-icons/fa'
+import { FaUser } from 'react-icons/fa'
 import UserSettings from './UserSettings';
 
 import './navbar.scss';
@@ -33,11 +33,11 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
 
       {user && (
         <li className='user-settings'>
-          <FaUserCircle onClick={() => setShowUserSettings(!showUserSettings)} />
-          {showUserSettings && (
-            <UserSettings toggle={toggle}
-              setToggle={setToggle} setTheme={setTheme} theme={theme} />
-          )}
+          <FaUser onClick={() => setShowUserSettings(!showUserSettings)} />
+
+          <UserSettings toggle={toggle}
+            setToggle={setToggle} setTheme={setTheme} theme={theme} showUserSettings={showUserSettings} setShowUserSettings={setShowUserSettings} />
+
         </li>
       )}
 

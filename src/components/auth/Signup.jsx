@@ -3,10 +3,12 @@ import { useSignup } from '../../hooks/useSignup'
 import './auth.scss';
 import { AiFillGoogleCircle, AiFillGithub } from 'react-icons/ai'
 import { RiLinkedinFill } from 'react-icons/ri'
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 // firebase imports
 import { collection, getDocs } from 'firebase/firestore'
-import { db } from '../../firebase/config'
+import { db, auth } from '../../firebase/config'
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 
 
@@ -19,8 +21,6 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
   const [takenNames, setTakenNames] = useState([])
 
   const { error, signup } = useSignup();
-
-
 
   // get the existing display names.
   useEffect(() => {
@@ -54,6 +54,21 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
     signup(email, password, displayName)
   }
 
+  // sign up with Google
+  const signUpWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider).then((result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user
+      signup(result.user.email, null, result.user.displayName)
+
+      console.log(user)
+    }).catch((error) => {
+      console.error(error.message)
+    })
+  }
+
   // redirect to login modal
   const redirectLogin = () => {
     setShowSignup(false);
@@ -69,8 +84,8 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
       <div className="overlay"></div>
       <div className='modal secondary'>
         <div className="modal-header">
-          <img src="../images/logo.jpg" alt="" />
-          <h1> Bweem </h1>
+          {/* <img src="../images/logo.jpg" alt="" /> */}
+          <h1> Sign Up </h1>
         </div>
         <div className="close" onClick={() => setShowSignup(false)}>X</div>
         {error && <p className='error'>{error}</p>}
@@ -85,16 +100,19 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
           <button> Sign Up </button>
         </form>
 
-        <div className='redirect-signup'><p>Have an account? </p>     <span onClick={redirectLogin}> Sign In</span></div>
+        <div className='redirect-signup'>
+          <p>Have an account?</p>
+          <span onClick={redirectLogin}> Sign In</span>
+        </div>
 
-        <div className="alternate-login">
+        {/* <div className="alternate-login">
           <p>or you can sign in with</p>
           <div className="icons">
-            <AiFillGoogleCircle className='icon' />
+            <AiFillGoogleCircle className='icon' onClick={signUpWithGoogle} />
             <AiFillGithub className='icon' />
             <RiLinkedinFill className='icon' />
           </div>
-        </div>
+        </div> */}
 
         <div className="disclaimer">
           <p>This site is protected by reCAPTCHA and the Google <span>Privacy Policy</span> and <span>Terms of Service</span> apply.</p>
