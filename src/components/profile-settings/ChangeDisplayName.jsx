@@ -47,7 +47,6 @@ const ChangeDisplayName = ({ profile }) => {
       })
   }, [])
 
-  console.log(displayName)
 
   const changeDisplayName = () => {
 

@@ -62,8 +62,6 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
       const token = credential.accessToken;
       const user = result.user
       signup(result.user.email, null, result.user.displayName)
-
-      console.log(user)
     }).catch((error) => {
       console.error(error.message)
     })

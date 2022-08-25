@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 
@@ -21,12 +21,17 @@ const Router = () => {
 	const [theme, setTheme] = useState(true);
 	const [toggle, setToggle] = useState(false);
 
-	console.log(theme);
+	useEffect(() => {
+		const data = localStorage.getItem('theme');
+		if (data) {
+			setTheme(JSON.parse(data));
+		}
+	}, [theme]);
 
 	return (
 		authIsReady && (
 			<BrowserRouter>
-				<ThemeProvider theme={!theme ? darkTheme : lightTheme}>
+				<ThemeProvider theme={theme ? darkTheme : lightTheme}>
 					<GlobalStyles />
 					<StyledApp>
 						<Navbar

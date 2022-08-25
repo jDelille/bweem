@@ -8,11 +8,10 @@ import ChangePassword from './ChangePassword';
 
 
 const ProfileInformation = ({ profileData }) => {
- console.log(profileData)
  return (
-  <div>{profileData.map(profile => {
+  <div>{profileData.map((profile, index) => {
    return (
-    <div className='information-content'>
+    <div className='information-content' key={index}>
      {profile.verfied === false && (
       <div>
        <VerifyEmail />

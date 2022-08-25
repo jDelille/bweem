@@ -10,7 +10,7 @@ export const lightTheme = {
 	togglePill: '#DEDFE2',
 	modalHeader: '#DEDFE2',
 	modalHeaderColor: '#333333',
-	errorBG: '#750c25',
+	errorBG: '#301a1f',
 };
 
 export const darkTheme = {

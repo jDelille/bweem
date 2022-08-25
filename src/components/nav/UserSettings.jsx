@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useLogout } from '../../hooks/useLogout';
 import { IoIosSettings } from 'react-icons/io'
@@ -33,10 +33,14 @@ const UserSettings = ({ setToggle, toggle, setTheme, theme, showUserSettings, se
     logout();
   }
 
+  useEffect(() => {
+    localStorage.setItem('theme', JSON.stringify(theme))
+  }, [theme])
+
   return (
     <div className={showUserSettings ? 'settings secondary' : 'hide'} >
       <TiArrowSortedUp className='up-arrow arrow-color' />
-      <p>Hey, <span style={{ color: "#158782", fontWeight: '500' }}>{displayName}</span></p>
+      <p>Hey, <span style={{ color: "#159309", fontWeight: '500' }}>{displayName}</span></p>
       <ul>
         <li>
           <NavLink to='/profile' onClick={() => setShowUserSettings(false)}><span><IoIosSettings className='icon' /></span>Account Settings </NavLink>
