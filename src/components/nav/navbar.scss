@@ -5,7 +5,7 @@ nav {
 	display: flex;
 	align-items: center;
 	gap: 2rem;
-	padding: 0 12rem;
+	padding: var(--padding);
 	.links {
 		display: flex;
 		gap: 1rem;

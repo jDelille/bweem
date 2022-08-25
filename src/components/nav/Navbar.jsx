@@ -22,7 +22,7 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
         {!user && (
           <div className='user-auth'>
             <li>
-              <p onClick={() => setShowLogin(true)}> Log In </p>
+              <p onClick={() => setShowLogin(true)}> Login </p>
             </li>
             <li>
               <p onClick={() => setShowSignup(true)} className='signup-btn'> Sign Up </p>

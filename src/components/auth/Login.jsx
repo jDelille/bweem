@@ -32,7 +32,7 @@ const Login = ({ setShowLogin, setShowSignup }) => {
    <div className={!forgotPassword ? 'modal secondary' : 'hide-modal'} >
     <div className="modal-header">
      {/* <img src="../images/logo.jpg" alt="" /> */}
-     <h1> Sign In </h1>
+     <h1> Login </h1>
     </div>
     <div className="close" onClick={() => setShowLogin(false)}>X</div>
     {error && <p className='error'>{error}</p>}

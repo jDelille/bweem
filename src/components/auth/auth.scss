@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .overlay {
 	position: fixed;
 	min-width: 100vw;
@@ -25,8 +27,12 @@
 	background-color: white;
 	color: black;
 	border-radius: 3px;
-
 	box-shadow: rgb(19, 19, 19) 0px 1px 1px 0px;
+	@include sm() {
+		height: 100vh;
+		top: 0;
+		min-width: 100vw;
+	}
 	.modal-header {
 		display: flex;
 		align-items: center;

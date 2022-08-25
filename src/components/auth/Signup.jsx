@@ -102,7 +102,7 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
 
         <div className='redirect-signup'>
           <p>Have an account?</p>
-          <span onClick={redirectLogin}> Sign In</span>
+          <span onClick={redirectLogin}>Login</span>
         </div>
 
         {/* <div className="alternate-login">
