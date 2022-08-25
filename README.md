@@ -13,6 +13,7 @@ So far, the implemented features are:
 - Forgot Password
 - Update display name
 - Delete account
+- Saved dark / light mode setting
 
 What am I working on right now?
 - Alternate sign in / sign up methods (Google, Github)
