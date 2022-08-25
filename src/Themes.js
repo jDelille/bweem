@@ -8,16 +8,22 @@ export const lightTheme = {
 	boxShadow: 'lightgray 0px 1px 1px 0px',
 	border: '1px solid lightgray',
 	togglePill: '#DEDFE2',
+	modalHeader: '#DEDFE2',
+	modalHeaderColor: '#333333',
+	errorBG: '#750c25',
 };
 
 export const darkTheme = {
 	navBG: '#121216',
-	primaryBG: '#1D2021',
-	secondaryBG: '#181A1B',
+	primaryBG: '#0d1117',
+	secondaryBG: '#1A1F24',
 	font: '#eaeaea',
 	boxShadow: 'rgb(19, 19, 19) 0px 1px 1px 0px',
 	border: '1px solid #717F90',
 	togglePill: '#007AFF',
+	modalHeader: '#161b22',
+	modalHeaderColor: '#c9d1d9',
+	errorBG: '#301a1f',
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -40,6 +46,18 @@ export const GlobalStyles = createGlobalStyle`
 .pill {
 	background-color: ${(props) => props.theme.togglePill};
 
+}
+.warning {
+	background-color: ${(props) => props.theme.errorBG};
+
+
+}
+.modal-header-delete {
+	background-color: ${(props) => props.theme.modalHeader};
+	color: ${(props) => props.theme.modalHeaderColor};
+}
+.modal-body {
+	color: ${(props) => props.theme.modalHeaderColor};
 }
 ul li a {
   color: ${(props) => props.theme.font};

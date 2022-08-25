@@ -36,7 +36,7 @@ const UserSettings = ({ setToggle, toggle, setTheme, theme, showUserSettings, se
   return (
     <div className={showUserSettings ? 'settings secondary' : 'hide'} >
       <TiArrowSortedUp className='up-arrow arrow-color' />
-      <p>Hey, {displayName}</p>
+      <p>Hey, <span style={{ color: "#158782", fontWeight: '500' }}>{displayName}</span></p>
       <ul>
         <li>
           <NavLink to='/profile' onClick={() => setShowUserSettings(false)}><span><IoIosSettings className='icon' /></span>Account Settings </NavLink>

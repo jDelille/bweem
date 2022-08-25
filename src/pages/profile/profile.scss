@@ -1,10 +1,18 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
 .profile {
+	padding: var(--padding);
 	.header {
 		height: fit-content;
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;
 		align-items: center;
+		@include sm() {
+			font-size: 0.9rem;
+			text-align: center;
+		}
 	}
 	.information {
 		display: flex;
@@ -25,9 +33,18 @@
 				font-size: 1.2rem;
 				border-radius: 5px;
 				align-items: center;
+				@include sm() {
+					width: 100%;
+					flex-direction: column;
+					align-items: flex-start;
+					position: relative;
+				}
 				.label {
 					font-weight: 600;
 					width: 20%;
+					@include sm() {
+						width: 50%;
+					}
 				}
 				.edit {
 					margin-left: auto;
@@ -39,6 +56,11 @@
 					justify-content: center;
 					color: white;
 					cursor: pointer;
+					@include sm() {
+						position: absolute;
+						top: 1rem;
+						right: 1rem;
+					}
 				}
 				.edit-icon {
 					font-size: 1.4rem;

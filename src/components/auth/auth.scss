@@ -8,6 +8,7 @@
 	opacity: 0.6;
 	z-index: 9999;
 	top: 0;
+	left: 0;
 }
 
 .modal,
@@ -82,12 +83,14 @@
 		cursor: pointer;
 	}
 	.error {
-		background-color: #f8d7da;
+		background-color: #7e2e35;
 		color: #721c24;
 		padding: 1rem;
 		border-radius: 4px;
 		font-size: 1rem;
 		margin-bottom: 1rem;
+		display: flex;
+		justify-content: space-between;
 	}
 	.btn {
 		background-color: #d4edda;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useNavigate } from "react-router-dom";
 import './profile-settings.scss';
 import '../../pages/profile/profile.scss';
 
@@ -17,9 +18,9 @@ const ChangeDisplayName = ({ profile }) => {
   const [changeName, setChangeName] = useState(false)
 
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const userRef = doc(db, "users", user.uid)
-
 
   // get the existing display names.
   useEffect(() => {
@@ -71,6 +72,7 @@ const ChangeDisplayName = ({ profile }) => {
       setTimeout(() => {
         setSuccessMsg(null)
         setChangeName(false)
+        navigate(0);
       }, 2000)
 
       setErrorMsg(null)

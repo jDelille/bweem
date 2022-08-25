@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { useNavigate } from "react-router-dom";
+
 import './profile-settings.scss';
 import '../../pages/profile/profile.scss';
 
@@ -18,6 +20,7 @@ const ChangeEmail = ({ profile }) => {
   const [changeEmail, setChangeEmail] = useState(false)
 
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const userRef = doc(db, "users", user.uid)
 
@@ -63,11 +66,11 @@ const ChangeEmail = ({ profile }) => {
         setTimeout(() => {
           setSuccessMsg(null)
           setChangeEmail(false)
+          navigate(0);
         }, 2000)
       }).catch((error) => {
         setErrorMsg(error.message)
       })
-
     setErrorMsg(null)
   }
 

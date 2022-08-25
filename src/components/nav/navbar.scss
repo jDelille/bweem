@@ -46,9 +46,9 @@ nav {
 		height: 100%;
 		display: flex;
 		align-items: center;
+		z-index: 9999;
 		.dark-mode {
 			display: flex;
-			align-items: center;
 			.pill {
 				width: 40px;
 				height: 20px;
@@ -106,18 +106,19 @@ nav {
 		gap: 1rem;
 		li {
 			display: flex;
-			align-items: center;
 			gap: 0.25rem;
 			a {
 				display: flex;
-				align-items: center;
 				gap: 0.25rem;
+				width: 100%;
 			}
 		}
 		.icon {
 			height: 100%;
 			display: flex;
 			align-items: center;
+			justify-content: center;
+			max-width: 100%;
 		}
 	}
 }
