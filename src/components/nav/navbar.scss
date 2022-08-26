@@ -41,6 +41,8 @@ nav {
 		margin-left: auto;
 		list-style-type: none;
 		font-size: 1.3rem;
+		display: flex;
+		gap: 1rem;
 		cursor: pointer;
 		position: relative;
 		height: 100%;
@@ -121,6 +123,10 @@ nav {
 			max-width: 100%;
 		}
 	}
+}
+
+.favorites {
+	right: 2rem;
 }
 
 .hide {

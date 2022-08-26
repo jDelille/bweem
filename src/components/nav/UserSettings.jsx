@@ -43,7 +43,7 @@ const UserSettings = ({ setToggle, toggle, setTheme, theme, showUserSettings, se
       <p>Hey, <span style={{ color: "#159309", fontWeight: '500' }}>{displayName}</span></p>
       <ul>
         <li>
-          <NavLink to='/profile' onClick={() => setShowUserSettings(false)}><span><IoIosSettings className='icon' /></span>Account Settings </NavLink>
+          <NavLink to='/profile' onClick={() => setShowUserSettings(false)}><span><IoIosSettings className='icon' /></span>Profile</NavLink>
         </li>
         <li className='dark-mode'>
           <span><CgDarkMode className='icon' /></span>

@@ -25,6 +25,7 @@ export const useSignup = () => {
 					displayName: displayName,
 					email: email,
 					verified: false,
+					favorite_Chords: [],
 				};
 				setDoc(doc(db, collectionId, documentId), value);
 

@@ -57,7 +57,7 @@ const ChangeDisplayName = ({ profile }) => {
     if (takenNames.includes(displayName)) return setErrorMsg('Display name already in use.')
 
     // check if name is less than 15 characters
-    if (displayName.length > 15) return setErrorMsg('You must make your display name less than 15 characters.')
+    if (displayName.length > 15) return setErrorMsg('You must make your display name less than 15 ceharacters.')
 
     // check if name has special characters
     const specialChars = /[^\w\s]/
@@ -83,7 +83,7 @@ const ChangeDisplayName = ({ profile }) => {
 
   return (
     <>
-      <div className='secondary setting-option'>
+      <div className='primary setting-option'>
         <span className='label'>Display Name</span>
         <p>{profile.displayName}</p>
         <span className='edit' onClick={() => setChangeName(true)}>

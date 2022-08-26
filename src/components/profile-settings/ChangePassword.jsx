@@ -28,7 +28,7 @@ const ChangePassword = ({ profile }) => {
 
  return (
   <>
-   <div className='secondary setting-option'>
+   <div className='primary setting-option'>
     <span className='label'>Password</span>
     <p>•••••••••••</p>
     <span className='edit' onClick={() => setChangePassword(true)}>

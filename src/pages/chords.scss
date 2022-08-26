@@ -1,0 +1,19 @@
+@import '../styles/variables.scss';
+
+.keys {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	padding: 2rem 0;
+	button {
+		background: none;
+		font-size: 1.3rem;
+		color: white;
+		border: none;
+		background-color: var(--accent);
+		padding: 0.5rem 1rem;
+		min-width: 80px;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+}

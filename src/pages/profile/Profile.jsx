@@ -36,7 +36,7 @@ const Profile = () => {
 
 
   return (
-    <div className='page primary'>
+    <div className='page secondary'>
       <div className="profile">
         <div className="header">
           <h1> Account Information </h1>

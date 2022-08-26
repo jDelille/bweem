@@ -76,7 +76,7 @@ const ChangeEmail = ({ profile }) => {
 
   return (
     <>
-      <div className='secondary setting-option' >
+      <div className='primary setting-option' >
         <span className='label'>Account Email</span>
         <p>{profile.email}</p>
         <span className='edit' onClick={() => setChangeEmail(true)}>
