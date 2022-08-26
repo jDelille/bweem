@@ -19,6 +19,9 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
         <li>
           <NavLink to='/'> Home </NavLink>
         </li>
+        <li>
+          <NavLink to='/chords'> Chords </NavLink>
+        </li>
 
         {!user && (
           <div className='user-auth'>

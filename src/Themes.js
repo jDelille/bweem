@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 export const lightTheme = {
 	navBG: '#f1f2f3',
-	primaryBG: '#ededed',
-	secondaryBG: '#ffffff',
+	primaryBG: '#FFFFFF',
+	secondaryBG: '#ededed',
 	font: '#303841',
 	boxShadow: 'lightgray 0px 1px 1px 0px',
 	border: '1px solid lightgray',

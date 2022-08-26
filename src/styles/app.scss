@@ -23,12 +23,14 @@ input {
 
 .page {
 	height: fit-content;
+	padding: var(--padding);
 	padding-bottom: 5rem;
-	.show-chords {
-		display: flex;
-		gap: 2rem;
-		flex-wrap: wrap;
+	min-height: 100vh;
 
-		padding: 0 6rem;
+	.show-chords {
+		display: grid;
+		grid-template-columns: repeat(4, 0fr);
+		grid-gap: 4rem;
+		justify-content: center;
 	}
 }

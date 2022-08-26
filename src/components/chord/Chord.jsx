@@ -4,13 +4,17 @@ import './chord.scss';
 const Chord = ({ chord }) => {
  let numOfstrings = 5;
  let getStrings = chord?.strings
+ let getName = chord?.chordName;
 
- // remove spaces
- let strings = "";
- if (getStrings) strings += getStrings.replace(/\s/g, '');
+ // remove spaces || commas
+ let string_position = "";
+ if (getStrings) string_position += getStrings.replace(/\s/g, '');
+ let chord_name = "";
+ if (getName) chord_name += getName.replace(/,/g, '');
+
 
  // get the highest string number and add 2 to it
- let stringArray = strings.split("")
+ let stringArray = string_position.split("")
  let maxNum = 0;
 
  stringArray.forEach(string => {
@@ -19,8 +23,6 @@ const Chord = ({ chord }) => {
  })
 
  let max = parseInt(maxNum)
-
-
 
  return (
   <div className='diagram'>
@@ -34,9 +36,12 @@ const Chord = ({ chord }) => {
     </div>
     {Array.from(Array(numOfstrings), (item, idx) => {
      return <div className="string">
-      {Array.from(Array(max + 2), (fret, index) => {
+      {Array.from(Array(4), (fret, index) => {
        return <div className="fret primary">
-        {strings[idx] == index ? <p className={strings[idx] == 0 ? "open" : "closed"}>  </p> : null}
+        {string_position[idx] == index ?
+         <p className={string_position[idx] == 0 ? "open" : "closed"}>
+          <span>{string_position[idx]}</span>
+         </p> : null}
        </div>
       })}
      </div>
@@ -45,7 +50,7 @@ const Chord = ({ chord }) => {
 
 
    </div>
-   <h1>{chord.chordName}</h1>
+   <h1>{chord_name}</h1>
 
   </div>
 

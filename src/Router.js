@@ -12,6 +12,7 @@ import Profile from './pages/profile/Profile';
 // styles
 import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from './Themes.js';
+import Chords from './pages/Chords';
 const StyledApp = styled.div``;
 
 const Router = () => {
@@ -57,6 +58,8 @@ const Router = () => {
 
 						<Routes>
 							<Route exact path='/' element={<Home />}></Route>
+							<Route exact path='/chords' element={<Chords />}></Route>
+
 							<Route path='/profile' element={user && <Profile />}></Route>
 						</Routes>
 					</StyledApp>
