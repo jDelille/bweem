@@ -22,6 +22,6 @@
 - Choose different keys
 
 What am I working on right now?
-- Saving favorite chords in the user collection.
+- Saving favorite chords in the user collection. (complete)
 - Chord guessing game where users choose notes on a diagram and it will be compared to the actual diagram. If the notes they chose match the actual diagram they recieve a point.
 
