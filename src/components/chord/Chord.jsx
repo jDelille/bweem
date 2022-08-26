@@ -5,7 +5,7 @@ import { db } from '../../firebase/config';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import './chord.scss';
 
-const Chord = ({ chord }) => {
+const Chord = ({ chord, hideInfo }) => {
   const { user } = useAuthContext();
   const userRef = doc(db, "users", user.uid)
 
@@ -62,13 +62,14 @@ const Chord = ({ chord }) => {
           </div>
         })}
 
-
-
       </div>
-      <div className="chord-info">
-        <h2>{chord_name}</h2>
-        <AiOutlineStar onClick={() => addFavorite(chord.chordName)} />
-      </div>
+      {!hideInfo && (
+        <div className="chord-info">
+          <h2>{chord_name}</h2>
+          <AiOutlineStar onClick={() => addFavorite(chord.chordName)} />
+        </div>
+      )}
+
 
 
     </div>
