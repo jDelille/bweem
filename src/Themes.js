@@ -40,8 +40,12 @@ export const GlobalStyles = createGlobalStyle`
 	color: ${(props) => props.theme.font};
 
 }
+
+.fret {
+	border: ${(props) => props.theme.border};
+}
 .arrow-color {
-	color: ${(props) => props.theme.secondaryBG};
+	color: ${(props) => props.theme.primaryBG};
 }
 .pill {
 	background-color: ${(props) => props.theme.togglePill};
@@ -63,7 +67,7 @@ ul li a {
   color: ${(props) => props.theme.font};
 }
 .links li a.active {
-		background-color: ${(props) => props.theme.primaryBG};
+		background-color: ${(props) => props.theme.secondaryBG};
 }
 .third {
 	 background-color: ${(props) => props.theme.secondaryBG};

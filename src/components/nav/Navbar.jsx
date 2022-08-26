@@ -11,7 +11,7 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
   const [showUserSettings, setShowUserSettings] = useState(false)
 
   return (
-    <nav className='primary secondary'>
+    <nav className='primary primary'>
       <div className="logo">
         <h1> Bweem.io </h1>
       </div>
@@ -19,6 +19,7 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
         <li>
           <NavLink to='/'> Home </NavLink>
         </li>
+
         {!user && (
           <div className='user-auth'>
             <li>

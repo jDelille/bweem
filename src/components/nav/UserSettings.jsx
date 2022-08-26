@@ -38,8 +38,8 @@ const UserSettings = ({ setToggle, toggle, setTheme, theme, showUserSettings, se
   }, [theme])
 
   return (
-    <div className={showUserSettings ? 'settings secondary' : 'hide'} >
-      <TiArrowSortedUp className='up-arrow arrow-color' />
+    <div className={showUserSettings ? 'settings primary' : 'hide'} >
+      <TiArrowSortedUp className='up-arrow arrow-color ' />
       <p>Hey, <span style={{ color: "#159309", fontWeight: '500' }}>{displayName}</span></p>
       <ul>
         <li>
