@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, setDoc, updateDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react'
 import { QuizContext } from '../../context/Quiz';
 import { db } from '../../firebase/config';
@@ -14,7 +14,6 @@ const Quiz = () => {
 
  const [currUser, setCurrUser] = useState('')
 
-
  useEffect(() => {
   getDocs(collection(db, 'users'))
    .then((snapshot) => {
@@ -24,8 +23,6 @@ const Quiz = () => {
     })
    })
  }, [])
-
-
 
  if (quizState?.showResults) {
   const value = {
@@ -41,6 +38,9 @@ const Quiz = () => {
 
  return (
   <div className='quiz secondary page'>
+
+
+
    {quizState?.showResults && (
     <div className='results'>
      <div className="congratulations">Congratulations</div>
@@ -53,6 +53,7 @@ const Quiz = () => {
      </div>
     </div>
    )}
+
    {!quizState.showResults && (
     <div className='quiz-content'>
      <div className="score">
@@ -61,6 +62,7 @@ const Quiz = () => {
      </div>
 
      <Question />
+
      <div className="next-button">
       <button onClick={() => dispatch({ type: 'NEXT_QUESTION' })}>Next Question</button>
      </div>

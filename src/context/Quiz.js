@@ -1,9 +1,13 @@
 import { createContext, useReducer } from 'react';
 import questions from '../data/questions';
+import medium from '../data/medium';
+import hard from '../data/hard';
+import advanced from '../data/advanced';
+import expert from '../data/expert';
 import { shuffleAnswers } from '../helpers/helpers';
 
 const initialState = {
-	questions,
+	questions: questions,
 	currentQuestionIndex: 0,
 	showResults: false,
 	correctAnswerCount: 0,
@@ -13,6 +17,37 @@ const initialState = {
 
 const reducer = (state, action) => {
 	switch (action.type) {
+		case 'EASY': {
+			return initialState;
+		}
+		case 'MEDIUM': {
+			const questions = medium;
+			return {
+				...state,
+				questions,
+			};
+		}
+		case 'HARD': {
+			const questions = hard;
+			return {
+				...state,
+				questions,
+			};
+		}
+		case 'ADVANCED': {
+			const questions = advanced;
+			return {
+				...state,
+				questions,
+			};
+		}
+		case 'EXPERT': {
+			const questions = expert;
+			return {
+				...state,
+				questions,
+			};
+		}
 		case 'SELECT_ANSWER': {
 			const correctAnswerCount =
 				action.payload ===

@@ -10,8 +10,6 @@ const Question = () => {
   const currentQuestion = quizState?.questions[quizState.currentQuestionIndex]
 
   const [chord, setChord] = useState([])
-  const [wrong, setWrong] = useState(false)
-  const [correct, setCorrect] = useState(false)
 
   useEffect(() => {
     fetch(`https://api.uberchord.com/v1/chords?names=${currentQuestion.chord}`)
@@ -19,8 +17,6 @@ const Question = () => {
       .then((data) => setChord(data))
       .catch((error) => console.error(error))
   }, [currentQuestion])
-
-
 
   return (
     <div>
