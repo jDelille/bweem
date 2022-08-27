@@ -7,7 +7,7 @@
 #### 
 
 #### So far, the implemented features are: 
-#### Auth:
+#### User:
 - Sign up
 - Sign In
 - Logout
@@ -16,12 +16,19 @@
 - Forgot Password
 - Update display name
 - Delete account
+- Saving favorite chords in the user collection.
 
 #### Guitar Chords:
 - Display chords
 - Choose different keys
 
+#### Guitar Quiz
+- Chord guessing game where users guess the name of a chord based on the diagram.
+- If they chose the correct name they will get a point.
+
+
 What am I working on right now?
-- Saving favorite chords in the user collection. (complete)
-- Chord guessing game where users choose notes on a diagram and it will be compared to the actual diagram. If the notes they chose match the actual diagram they recieve a point.
+- Add different quiz difficulty
+- Save user score to database
+- Add a leaderboard with all users scores.
 
