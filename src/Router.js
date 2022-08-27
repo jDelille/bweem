@@ -15,6 +15,7 @@ import { lightTheme, darkTheme, GlobalStyles } from './Themes.js';
 import Chords from './pages/Chords';
 import ChordQuiz from './pages/quiz/ChordQuiz';
 import Quiz from './pages/quiz/Quiz';
+import Leaderboard from './pages/leaderboard/Leaderboard';
 const StyledApp = styled.div``;
 
 const Router = () => {
@@ -62,7 +63,10 @@ const Router = () => {
 							<Route exact path='/' element={<Home />}></Route>
 							<Route exact path='/chords' element={<Chords />}></Route>
 							<Route exact path='/chord_quiz' element={<Quiz />}></Route>
-
+							<Route
+								exact
+								path='/leaderboard'
+								element={<Leaderboard />}></Route>
 							<Route path='/profile' element={user && <Profile />}></Route>
 						</Routes>
 					</StyledApp>

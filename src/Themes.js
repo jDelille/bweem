@@ -11,6 +11,7 @@ export const lightTheme = {
 	modalHeader: '#DEDFE2',
 	modalHeaderColor: '#333333',
 	errorBG: '#301a1f',
+	stringColor: 'lightgray',
 };
 
 export const darkTheme = {
@@ -24,6 +25,7 @@ export const darkTheme = {
 	modalHeader: '#161b22',
 	modalHeaderColor: '#c9d1d9',
 	errorBG: '#301a1f',
+	stringColor: '#717F90',
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -43,6 +45,10 @@ export const GlobalStyles = createGlobalStyle`
 
 .fret {
 	border: ${(props) => props.theme.border};
+}
+
+.fret::before {
+	background-color: ${(props) => props.theme.stringColor};
 }
 .arrow-color {
 	color: ${(props) => props.theme.primaryBG};

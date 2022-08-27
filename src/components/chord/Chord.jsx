@@ -9,15 +9,20 @@ const Chord = ({ chord, hideInfo }) => {
   const { user } = useAuthContext();
   const userRef = doc(db, "users", user.uid)
 
-  let numOfstrings = 5;
-  let getStrings = chord?.strings
+  let numOfstrings = 6;
+  let getStrings = chord?.strings;
+  let getFingering = chord?.fingering;
   let getName = chord?.chordName;
 
   // remove spaces || commas
   let string_position = "";
   if (getStrings) string_position += getStrings.replace(/\s/g, '');
+  let fingering = "";
+  if (getFingering) fingering += getFingering.replace(/\s/g, '')
   let chord_name = "";
   if (getName) chord_name += getName.replace(/,/g, '');
+
+
 
   // get the highest string number and add 2 to it
   let stringArray = string_position.split("")
@@ -51,11 +56,11 @@ const Chord = ({ chord, hideInfo }) => {
         </div>
         {Array.from(Array(numOfstrings), (item, idx) => {
           return <div className="string">
-            {Array.from(Array(4), (fret, index) => {
+            {Array.from(Array(5), (fret, index) => {
               return <div className="fret secondary">
                 {string_position[idx] == index ?
                   <p className={string_position[idx] == 0 ? "open" : "closed"}>
-                    <span>{string_position[idx]}</span>
+                    <span>{fingering[idx]}</span>
                   </p> : null}
               </div>
             })}

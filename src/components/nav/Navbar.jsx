@@ -27,6 +27,9 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
         <li>
           <NavLink to='/chord_quiz'> Chord Quiz </NavLink>
         </li>
+        <li>
+          <NavLink to='/leaderboard'> Leaderboard </NavLink>
+        </li>
 
 
         {!user && (
