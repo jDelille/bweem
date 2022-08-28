@@ -13,7 +13,7 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
   const [showFavorites, setShowFavorites] = useState(false)
 
   return (
-    <nav className='primary primary'>
+    <nav className=' primary'>
       <div className="logo">
         <h1> Bweem.io </h1>
       </div>
@@ -23,6 +23,9 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
         </li>
         <li>
           <NavLink to='/chords'> Chords </NavLink>
+        </li>
+        <li>
+          <NavLink to='/lobby'> Lobby </NavLink>
         </li>
         <li>
           <NavLink to='/chord_quiz'> Chord Quiz </NavLink>

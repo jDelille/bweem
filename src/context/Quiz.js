@@ -13,6 +13,7 @@ const initialState = {
 	correctAnswerCount: 0,
 	answers: shuffleAnswers(questions[0]),
 	currentAnswer: '',
+	difficulty: 'Easy',
 };
 
 const reducer = (state, action) => {
@@ -22,30 +23,38 @@ const reducer = (state, action) => {
 		}
 		case 'MEDIUM': {
 			const questions = medium;
+			const difficulty = 'Medium';
 			return {
 				...state,
 				questions,
+				difficulty,
 			};
 		}
 		case 'HARD': {
 			const questions = hard;
+			const difficulty = 'Hard';
 			return {
 				...state,
 				questions,
+				difficulty,
 			};
 		}
 		case 'ADVANCED': {
 			const questions = advanced;
+			const difficulty = 'Advanced';
 			return {
 				...state,
 				questions,
+				difficulty,
 			};
 		}
 		case 'EXPERT': {
 			const questions = expert;
+			const difficulty = 'Expert';
 			return {
 				...state,
 				questions,
+				difficulty,
 			};
 		}
 		case 'SELECT_ANSWER': {

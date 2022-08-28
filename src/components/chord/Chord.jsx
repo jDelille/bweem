@@ -48,7 +48,7 @@ const Chord = ({ chord, hideInfo }) => {
     <div className='diagram'>
       <div className='chord'>
         <div className="fret-labels">
-          {Array.from(Array(max + 2), (label, index) => {
+          {Array.from(Array(6), (label, index) => {
             return <div className="label">
               <p>{index}</p>
             </div>
@@ -56,7 +56,7 @@ const Chord = ({ chord, hideInfo }) => {
         </div>
         {Array.from(Array(numOfstrings), (item, idx) => {
           return <div className="string">
-            {Array.from(Array(5), (fret, index) => {
+            {Array.from(Array(6), (fret, index) => {
               return <div className="fret secondary">
                 {string_position[idx] == index ?
                   <p className={string_position[idx] == 0 ? "open" : "closed"}>

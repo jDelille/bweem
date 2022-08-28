@@ -47,6 +47,14 @@ export const GlobalStyles = createGlobalStyle`
 	border: ${(props) => props.theme.border};
 }
 
+.active {
+	background-color: ${(props) => props.theme.primaryBG};
+}
+
+.user {
+	border-bottom: ${(props) => props.theme.border};
+}
+
 .fret::before {
 	background-color: ${(props) => props.theme.stringColor};
 }

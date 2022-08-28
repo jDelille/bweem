@@ -16,6 +16,7 @@ import Chords from './pages/Chords';
 import ChordQuiz from './pages/quiz/ChordQuiz';
 import Quiz from './pages/quiz/Quiz';
 import Leaderboard from './pages/leaderboard/Leaderboard';
+import Lobby from './pages/lobby/Lobby';
 const StyledApp = styled.div``;
 
 const Router = () => {
@@ -63,6 +64,8 @@ const Router = () => {
 							<Route exact path='/' element={<Home />}></Route>
 							<Route exact path='/chords' element={<Chords />}></Route>
 							<Route exact path='/chord_quiz' element={<Quiz />}></Route>
+							<Route exact path='/lobby' element={<Lobby />}></Route>
+
 							<Route
 								exact
 								path='/leaderboard'
