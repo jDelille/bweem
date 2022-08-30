@@ -7,15 +7,13 @@ import '../../pages/profile/profile.scss';
 // firebase imports
 import { collection, doc, getDocs, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase/config'
-import { MdModeEditOutline } from 'react-icons/md';
 
-const ChangeDisplayName = ({ profile }) => {
+const ChangeDisplayName = ({ profile, setChangeName, changeName }) => {
   const [displayName, setDisplayName] = useState("")
   const [takenNames, setTakenNames] = useState([])
   const [errorMsg, setErrorMsg] = useState(null)
   const [successMsg, setSuccessMsg] = useState(null)
   const [currUser, setCurrUser] = useState([])
-  const [changeName, setChangeName] = useState(false)
 
   const { user } = useAuthContext();
   const navigate = useNavigate();
@@ -83,14 +81,6 @@ const ChangeDisplayName = ({ profile }) => {
 
   return (
     <>
-      <div className='primary setting-option'>
-        <span className='label'>Display Name</span>
-        <p>{profile.displayName}</p>
-        <span className='edit' onClick={() => setChangeName(true)}>
-          <MdModeEditOutline className='edit-icon' />
-        </span>
-      </div>
-
       {changeName && (
         <>
           <div className="overlay"></div>
@@ -106,11 +96,10 @@ const ChangeDisplayName = ({ profile }) => {
                 <p className="close" onClick={() => setChangeName(false)}> X </p>
                 <h1> Change your display name </h1>
                 {errorMsg && <p className='error'>{errorMsg}</p>}
-                <input type="text" onChange={(e) => setDisplayName(e.target.value)} placeholder={profile.displayName} className="primary" />
+                <input type="text" onChange={(e) => setDisplayName(e.target.value)} placeholder={profile?.displayName} className="primary" />
                 <button onClick={changeDisplayName} className='btn'>Update Display Name</button>
               </>
             )}
-
           </div>
         </>
       )}

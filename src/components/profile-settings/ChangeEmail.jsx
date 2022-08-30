@@ -11,13 +11,12 @@ import { db } from '../../firebase/config'
 import { MdModeEditOutline } from 'react-icons/md';
 import { updateEmail } from 'firebase/auth';
 
-const ChangeEmail = ({ profile }) => {
+const ChangeEmail = ({ profile, changeEmail, setChangeEmail }) => {
   const [email, setEmail] = useState("")
   const [takenEmails, setTakenEmails] = useState([])
   const [errorMsg, setErrorMsg] = useState(null)
   const [successMsg, setSuccessMsg] = useState(null)
   const [currUser, setCurrUser] = useState([])
-  const [changeEmail, setChangeEmail] = useState(false)
 
   const { user } = useAuthContext();
   const navigate = useNavigate();
@@ -76,13 +75,6 @@ const ChangeEmail = ({ profile }) => {
 
   return (
     <>
-      <div className='primary setting-option' >
-        <span className='label'>Account Email</span>
-        <p>{profile.email}</p>
-        <span className='edit' onClick={() => setChangeEmail(true)}>
-          <MdModeEditOutline className='edit-icon' />
-        </span>
-      </div>
       {changeEmail && (
         <>
           <div className="overlay"></div>

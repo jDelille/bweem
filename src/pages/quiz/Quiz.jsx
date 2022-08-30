@@ -40,7 +40,7 @@ const Quiz = () => {
       attempts: 1,
       rank: "Bedroom Guitarist",
       difficulty: quizState.difficulty,
-      duration: timerClock
+      duration: duration
     }
     if (quizState.difficulty === 'Easy') {
       setDoc(easyLeaderboardRef, value)
@@ -67,18 +67,16 @@ const Quiz = () => {
     setDuration(timerClock)
   }
 
+
   const restartQuiz = () => {
     setDuration(0)
     setTimerClock(0)
   }
 
 
-  console.log(quizState.currentQuestionIndex, quizState.questions.length)
-
   return (
     <div className='quiz secondary page'>
 
-      <p className='timer'>{duration === 0 ? `Duration: ${timerClock} seconds` : `You finished in ${duration} seconds`} </p>
 
       {quizState?.showResults && (
         <div className='results'>
@@ -93,7 +91,9 @@ const Quiz = () => {
         </div>
       )}
 
+
       {!quizState.showResults && (
+
         <div className='quiz-content'>
           <div className="score">
             <p>Question {quizState.currentQuestionIndex + 1} / {quizState.questions.length}
@@ -102,14 +102,19 @@ const Quiz = () => {
 
           <Question />
 
-          <div className="next-button">
-            {quizState.currentQuestionIndex + 1 === quizState.questions.length ? (
-              <button onClick={() => { dispatch({ type: 'NEXT_QUESTION' }); checkLastQuestion() }}>Finish</button>
-            ) : (
-              <button onClick={() => dispatch({ type: 'NEXT_QUESTION' })}>Next Question</button>
-            )}
+          <div className="quiz-controls primary">
+            <p className='timer'>{duration === 0 ? `Duration: ${timerClock} seconds` : `You finished in ${duration} seconds`} </p>
+
+            <div className="next-button">
+              {quizState.currentQuestionIndex + 1 === quizState.questions.length ? (
+                <button onClick={() => { dispatch({ type: 'NEXT_QUESTION' }); checkLastQuestion() }}>Finish</button>
+              ) : (
+                <button onClick={() => dispatch({ type: 'NEXT_QUESTION' })}>Next Question</button>
+              )}
+            </div>
 
           </div>
+
         </div>
       )}
 

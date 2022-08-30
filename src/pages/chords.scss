@@ -1,19 +1,44 @@
 @import '../styles/variables.scss';
 
-.keys {
+.chord-page {
 	display: flex;
-	gap: 1rem;
+	flex-direction: column;
+	gap: 5rem;
+	position: relative;
+	top: 65px;
+}
+.controls {
+	display: flex;
+	flex-direction: column;
+	height: 200px;
+	margin-top: 1rem;
+	align-items: center;
 	justify-content: center;
-	padding: 2rem 0;
-	button {
-		background: none;
+	gap: 1rem;
+	border-radius: 6px;
+	@include sm() {
+		width: 100%;
+	}
+	h1 {
 		font-size: 1.3rem;
-		color: white;
-		border: none;
-		background-color: var(--accent);
-		padding: 0.5rem 1rem;
-		min-width: 80px;
-		border-radius: 5px;
-		cursor: pointer;
+	}
+	.keys {
+		display: flex;
+		@include sm() {
+			flex-wrap: wrap;
+		}
+		button {
+			background: none;
+			font-size: 1.3rem;
+			border: none;
+			padding: 0.5rem 1rem;
+			min-width: 80px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.active {
+			background-color: dodgerblue;
+			color: white;
+		}
 	}
 }

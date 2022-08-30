@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate } from 'react-router-dom'
 import { useLogout } from '../../hooks/useLogout';
 import { IoIosSettings } from 'react-icons/io'
 import { IoLogOutOutline } from 'react-icons/io5'
 import { CgDarkMode } from 'react-icons/cg'
 import { TiArrowSortedUp } from 'react-icons/ti'
+import { AiFillHome, AiFillTrophy } from 'react-icons/ai'
+import { FaGuitar } from 'react-icons/fa'
+import { MdQuiz } from 'react-icons/md'
 import './navbar.scss'
 
 // firebase imports
@@ -31,6 +34,7 @@ const UserSettings = ({ setToggle, toggle, setTheme, theme, showUserSettings, se
   const signoutUser = () => {
     setShowUserSettings(false)
     logout();
+
   }
 
   useEffect(() => {
@@ -43,7 +47,22 @@ const UserSettings = ({ setToggle, toggle, setTheme, theme, showUserSettings, se
       <p>Hey, <span style={{ color: "#159309", fontWeight: '500' }}>{displayName}</span></p>
       <ul>
         <li>
-          <NavLink to='/profile' onClick={() => setShowUserSettings(false)}><span><IoIosSettings className='icon' /></span>Profile</NavLink>
+          <NavLink to={`/profile/${user.uid}`} reloadDocument onClick={() => setShowUserSettings(false)}><span><IoIosSettings className='icon' /></span>Profile</NavLink>
+        </li>
+
+        <li>
+          <NavLink to='/'><span><AiFillHome className='icon' /></span> Home </NavLink>
+        </li>
+        <li>
+          <NavLink to='/chords'><span><FaGuitar className='icon' /></span> Chords </NavLink>
+        </li>
+        {user && (
+          <li>
+            <NavLink to='/lobby'><span><MdQuiz className='icon' /></span> Lobby </NavLink>
+          </li>
+        )}
+        <li>
+          <NavLink to='/leaderboard'><span><AiFillTrophy className='icon' /></span> Leaderboard </NavLink>
         </li>
         <li className='dark-mode'>
           <span><CgDarkMode className='icon' /></span>

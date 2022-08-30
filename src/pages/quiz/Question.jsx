@@ -20,25 +20,28 @@ const Question = () => {
 
   return (
     <div>
-      <div className='question'>{currentQuestion.question}</div>
-      <div className="show-chord">
-        {chord.map((chord, i) => {
-          return <Chord chord={chord} hideInfo={true} />
-        })}
-      </div>
-      <div className="answers">
-        {quizState.answers.map((answer, i) => {
-          return (
-            <Answers
-              answerText={answer}
-              key={i}
-              index={i}
-              currentAnswer={quizState.currentAnswer}
-              correctAnswer={currentQuestion.correctAnswer}
-              onSelectAnswer={(answerText) => dispatch({ type: 'SELECT_ANSWER', payload: answerText })}
-            />
-          )
-        })}
+
+      <div className="question-content">
+        <div className="show-chord">
+          {chord.map((chord, i) => {
+            return <Chord chord={chord} hideInfo={true} />
+          })}
+        </div>
+        <div className="answers">
+          <div className='question'>{currentQuestion.question}</div>
+          {quizState.answers.map((answer, i) => {
+            return (
+              <Answers
+                answerText={answer}
+                key={i}
+                index={i}
+                currentAnswer={quizState.currentAnswer}
+                correctAnswer={currentQuestion.correctAnswer}
+                onSelectAnswer={(answerText) => dispatch({ type: 'SELECT_ANSWER', payload: answerText })}
+              />
+            )
+          })}
+        </div>
       </div>
     </div>
   )

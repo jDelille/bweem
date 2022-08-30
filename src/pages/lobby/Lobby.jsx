@@ -6,7 +6,7 @@ const Lobby = () => {
  const [startQuiz, setStartQuiz] = useState(false)
 
  return (
-  <div className='primary page'>
+  <div className='secondary page'>
    <StartQuiz setStartQuiz={setStartQuiz} setTimer={setTimer} />
   </div>
  )

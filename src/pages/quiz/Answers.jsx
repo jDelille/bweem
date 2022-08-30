@@ -19,7 +19,7 @@ const Answers = ({ answerText, index, onSelectAnswer, currentAnswer, correctAnsw
   <div className={`answer ${correctAnswerClass} ${wrongAnswerClass} ${disabledClass} primary`} onClick={() => { onSelectAnswer(answerText); setSelected(true) }}>
    <div className="answer-text">
     <label className='answer-option'>
-     <p><span>{letterMapping[index]}</span> {" "} {answerText}</p>
+     <p><span></span> {" "} {answerText}</p>
     </label>
    </div>
   </div>

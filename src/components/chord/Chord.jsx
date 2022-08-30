@@ -7,7 +7,7 @@ import './chord.scss';
 
 const Chord = ({ chord, hideInfo }) => {
   const { user } = useAuthContext();
-  const userRef = doc(db, "users", user.uid)
+
 
   let numOfstrings = 6;
   let getStrings = chord?.strings;
@@ -37,12 +37,12 @@ const Chord = ({ chord, hideInfo }) => {
   let max = parseInt(maxNum)
 
   // add favorite chord to firestore
-  const addFavorite = async (name) => {
-    let chord_name = name.replace(/,/g, '');
-    await updateDoc(userRef, {
-      favorite_Chords: arrayUnion(chord_name)
-    })
-  }
+  // const addFavorite = async (name) => {
+  //   let chord_name = name.replace(/,/g, '');
+  //   await updateDoc(userRef, {
+  //     favorite_Chords: arrayUnion(chord_name)
+  //   })
+  // }
 
   return (
     <div className='diagram'>
@@ -71,7 +71,7 @@ const Chord = ({ chord, hideInfo }) => {
       {!hideInfo && (
         <div className="chord-info">
           <h2>{chord_name}</h2>
-          <AiOutlineStar onClick={() => addFavorite(chord.chordName)} />
+          {/* <AiOutlineStar onClick={() => addFavorite(chord.chordName)} /> */}
         </div>
       )}
 

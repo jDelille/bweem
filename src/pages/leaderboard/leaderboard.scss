@@ -1,7 +1,41 @@
+@import '../../styles/mixins.scss';
+
 .leaderboard-header {
-	width: 50%;
+	width: 60%;
 	margin: 0 auto;
 	padding-top: 2rem;
+	gap: 2rem;
+	display: flex;
+	flex-direction: column;
+	@include sm() {
+		width: 100%;
+	}
+	.title {
+		display: flex;
+		align-items: center;
+		.difficulty-label {
+			margin-left: auto;
+			padding: 0.5rem;
+			border-radius: 5px;
+		}
+		.easy {
+			background-color: #d4edda;
+			color: #155724;
+		}
+		.medium {
+			background-color: #fff3cd;
+			color: #856404;
+		}
+		.hard {
+			background-color: #f8d7da;
+			color: #721c24;
+		}
+		.expert {
+			background-color: #cce5ff;
+			color: #004085;
+		}
+	}
+
 	.choose-leaderboard {
 		display: flex;
 		gap: 1rem;
@@ -19,34 +53,46 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	width: 50%;
+	width: 60%;
 	margin-top: 2rem;
 	padding: 1rem;
 	border-radius: 8px;
-
+	@include sm() {
+		width: 100%;
+	}
 	.labels {
 		width: 100%;
 		position: relative;
 		display: flex;
 		padding: 1rem;
 		gap: 1rem;
+
 		p {
 			font-size: 1rem;
 		}
 		.pos-label {
 			width: 15%;
+			@include sm() {
+				display: none;
+			}
 		}
 		.user-label {
 			width: 35%;
+			@include sm() {
+				display: none;
+			}
 		}
 		.time-label {
 			width: 25%;
 		}
 		.attempts-label {
 			width: 20%;
+			opacity: 0;
 		}
 		.score-label {
 			width: 5%;
+			margin-left: auto;
+			margin-right: 1rem;
 		}
 	}
 	.user {
@@ -65,8 +111,15 @@
 		}
 		.name {
 			width: 35%;
-			h1 {
-				font-size: 1.2rem;
+			@include sm() {
+				width: 100%;
+			}
+			span {
+				margin-right: 1rem;
+			}
+			a {
+				text-decoration: none;
+				font-size: 1.1rem;
 			}
 			.rank {
 				font-size: 0.8rem;
@@ -83,9 +136,13 @@
 			display: flex;
 			align-items: center;
 			width: 5%;
+			font-weight: 600;
+			font-size: 1.3rem;
+			margin-left: auto;
 		}
 		.attempts {
 			width: 20%;
+			opacity: 0;
 		}
 	}
 }

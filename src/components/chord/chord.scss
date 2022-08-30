@@ -7,6 +7,10 @@
 	position: relative;
 	width: 400px;
 	align-items: center;
+	margin-top: 3rem;
+	margin-bottom: 5rem;
+	border-bottom: 1px solid lightgray;
+	padding-bottom: 5rem;
 
 	h1 {
 		position: relative;
@@ -17,7 +21,6 @@
 		padding: 0.25rem;
 		font-size: 1rem;
 		margin-bottom: 2rem;
-		left: 0.8rem;
 	}
 }
 
@@ -28,6 +31,8 @@
 	justify-content: space-between;
 	color: #8a949e;
 	cursor: pointer;
+	position: relative;
+	left: 1.35rem;
 }
 
 .chord {

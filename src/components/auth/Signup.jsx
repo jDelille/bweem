@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSignup } from '../../hooks/useSignup'
 import './auth.scss';
-import { AiFillGoogleCircle, AiFillGithub } from 'react-icons/ai'
-import { RiLinkedinFill } from 'react-icons/ri'
-import { useAuthContext } from '../../hooks/useAuthContext';
+
 
 // firebase imports
 import { collection, getDocs } from 'firebase/firestore'
 import { db, auth } from '../../firebase/config'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 
 
@@ -19,6 +16,7 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [errorMsg, setErrorMsg] = useState(null)
   const [takenNames, setTakenNames] = useState([])
+  const [image, setImage] = useState(null)
 
   const { error, signup } = useSignup();
 
@@ -38,6 +36,8 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
       })
   }, [])
 
+
+
   // create new user account
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -52,19 +52,6 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
     if (takenNames.includes(displayName)) return setErrorMsg('Display name already in use.')
 
     signup(email, password, displayName)
-  }
-
-  // sign up with Google
-  const signUpWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
-      const user = result.user
-      signup(result.user.email, null, result.user.displayName)
-    }).catch((error) => {
-      console.error(error.message)
-    })
   }
 
   // redirect to login modal
@@ -95,6 +82,7 @@ const Signup = ({ setShowSignup, setShowLogin }) => {
           <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required className='secondary' />
           <input type="password" placeholder="Confirm Password" onChange={(e) => setPasswordConfirm(e.target.value)} required className='secondary' />
           <input type="email" placeholder="E-mail address" onChange={(e) => setEmail(e.target.value)} required className='secondary' />
+
           <button> Sign Up </button>
         </form>
 

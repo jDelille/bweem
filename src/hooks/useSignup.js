@@ -15,15 +15,18 @@ export const useSignup = () => {
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((res) => {
 				const uid = res.user.uid;
+
 				// collection
 				const collectionId = 'users';
+
 				// document
 				const documentId = uid;
+
 				// fields
 				const value = {
 					id: uid,
-					displayName: displayName,
-					email: email,
+					displayName,
+					email,
 					verified: false,
 					favorite_Chords: [],
 				};

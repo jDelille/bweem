@@ -13,9 +13,9 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
   const [showFavorites, setShowFavorites] = useState(false)
 
   return (
-    <nav className=' primary'>
+    <nav className='secondary'>
       <div className="logo">
-        <h1> Bweem.io </h1>
+        <NavLink to='/'> Bweem </NavLink>
       </div>
       <ul className="links">
         <li>
@@ -24,17 +24,14 @@ const Navbar = ({ setShowSignup, setShowLogin, setToggle, toggle, setTheme, them
         <li>
           <NavLink to='/chords'> Chords </NavLink>
         </li>
-        <li>
-          <NavLink to='/lobby'> Lobby </NavLink>
-        </li>
-        <li>
-          <NavLink to='/chord_quiz'> Chord Quiz </NavLink>
-        </li>
+        {user && (
+          <li>
+            <NavLink to='/lobby'> Lobby </NavLink>
+          </li>
+        )}
         <li>
           <NavLink to='/leaderboard'> Leaderboard </NavLink>
         </li>
-
-
         {!user && (
           <div className='user-auth'>
             <li>

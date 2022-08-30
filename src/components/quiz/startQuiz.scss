@@ -1,23 +1,41 @@
+@import '../../styles/mixins.scss';
+
 .select-difficulty {
 	padding: 1rem;
 	display: flex;
 	gap: 1rem;
 	flex-direction: column;
-	align-items: center;
 	p {
 		width: 40%;
 		font-size: 1.4rem;
+		@include sm() {
+			width: 100%;
+		}
 	}
 	.btns {
 		display: flex;
 		gap: 1rem;
-		button {
+		margin-top: 1rem;
+		align-items: center;
+		.desktop {
+			@include sm() {
+				display: none;
+			}
+		}
+		a {
 			background-color: var(--accent);
 			color: white;
 			padding: 0.5rem 1rem;
 			border: none;
 			border-radius: 5px;
 			cursor: pointer;
+			text-decoration: none;
+			&:hover {
+				background-color: darken($color: #2f89fc, $amount: 5);
+			}
+		}
+		p {
+			font-size: 1rem;
 		}
 	}
 }

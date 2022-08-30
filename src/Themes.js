@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 export const lightTheme = {
 	navBG: '#f1f2f3',
-	primaryBG: '#FFFFFF',
-	secondaryBG: '#ededed',
+	primaryBG: '#ECECEE',
+	secondaryBG: '#E4E4E7',
 	font: '#303841',
 	boxShadow: 'lightgray 0px 1px 1px 0px',
 	border: '1px solid lightgray',
@@ -11,13 +11,14 @@ export const lightTheme = {
 	modalHeader: '#DEDFE2',
 	modalHeaderColor: '#333333',
 	errorBG: '#301a1f',
-	stringColor: 'lightgray',
+	stringColor: '#303841',
+	accent: '#2f89fc',
 };
 
 export const darkTheme = {
 	navBG: '#121216',
-	primaryBG: '#0d1117',
-	secondaryBG: '#1A1F24',
+	primaryBG: '#1A1F24',
+	secondaryBG: '#0d1117',
 	font: '#eaeaea',
 	boxShadow: 'rgb(19, 19, 19) 0px 1px 1px 0px',
 	border: '1px solid #717F90',
@@ -26,6 +27,7 @@ export const darkTheme = {
 	modalHeaderColor: '#c9d1d9',
 	errorBG: '#301a1f',
 	stringColor: '#717F90',
+	accent: '#cce5ff',
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -43,6 +45,10 @@ export const GlobalStyles = createGlobalStyle`
 
 }
 
+.accent {
+	color: ${(props) => props.theme.accent};
+}
+
 .fret {
 	border: ${(props) => props.theme.border};
 }
@@ -53,6 +59,11 @@ export const GlobalStyles = createGlobalStyle`
 
 .user {
 	border-bottom: ${(props) => props.theme.border};
+}
+
+.answer {
+	border: ${(props) => props.theme.border};
+
 }
 
 .fret::before {
@@ -81,7 +92,7 @@ ul li a {
   color: ${(props) => props.theme.font};
 }
 .links li a.active {
-		background-color: ${(props) => props.theme.secondaryBG};
+		background-color: ${(props) => props.theme.primaryBG};
 }
 .third {
 	 background-color: ${(props) => props.theme.secondaryBG};

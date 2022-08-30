@@ -6,11 +6,24 @@ nav {
 	align-items: center;
 	gap: 2rem;
 	padding: var(--padding);
+	position: fixed;
+	z-index: 9999;
+	width: 100vw;
+	.logo {
+		a {
+			text-decoration: none;
+			font-size: 1.5rem;
+			font-weight: 600;
+		}
+	}
 	.links {
 		display: flex;
 		gap: 1rem;
 		align-items: center;
 		width: 100%;
+		@include sm() {
+			display: none;
+		}
 		li {
 			a {
 				text-decoration: none;

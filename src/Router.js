@@ -65,6 +65,7 @@ const Router = () => {
 							<Route exact path='/chords' element={<Chords />}></Route>
 							<Route exact path='/chord_quiz' element={<Quiz />}></Route>
 							<Route exact path='/lobby' element={<Lobby />}></Route>
+							<Route exact path='/profile/:id' element={<Profile />}></Route>
 
 							<Route
 								exact
