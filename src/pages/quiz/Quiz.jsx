@@ -1,10 +1,14 @@
-import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react'
 import { QuizContext } from '../../context/Quiz';
-import { db } from '../../firebase/config';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import Question from './Question';
+import { NavLink } from 'react-router-dom'
 import './quiz.scss'
+
+// firebase imports 
+import { collection, doc, getDocs, setDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+
 
 const Quiz = () => {
   const { user } = useAuthContext();
@@ -16,7 +20,7 @@ const Quiz = () => {
   const hardLeaderboardRef = doc(db, "hard_leaderboard", user.uid)
   const expertLeaderboardRef = doc(db, "expert_leaderboard", user.uid)
 
-  const [currUser, setCurrUser] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const [timerClock, setTimerClock] = useState(0)
   const [duration, setDuration] = useState(0)
 
@@ -25,26 +29,32 @@ const Quiz = () => {
       .then((snapshot) => {
         snapshot.docs.forEach(doc => {
           if (doc.id === user.uid)
-            setCurrUser(doc.data().displayName)
+            setDisplayName(doc.data().displayName)
         })
       })
   }, [])
+
+  let score = Math.floor(quizState.correctAnswerCount / quizState.questions.length * 100)
+  let correctAnswersCount = quizState.correctAnswerCount
+  let questionCount = quizState.questions.length
+  let currentQuestionIndex = quizState.currentQuestionIndex + 1
+  let difficulty = quizState.difficulty
 
   // store quiz results in leaderboard collection
   if (quizState?.showResults) {
     const value = {
       id: user.uid,
-      displayName: currUser,
-      score: quizState.correctAnswerCount,
-      questionCount: quizState.questions.length,
+      displayName,
+      score: correctAnswersCount,
+      questionCount,
       attempts: 1,
       rank: "Bedroom Guitarist",
-      difficulty: quizState.difficulty,
-      duration: duration
+      difficulty,
+      duration
     }
-    if (quizState.difficulty === 'Easy') {
+    if (difficulty === 'Easy') {
       setDoc(easyLeaderboardRef, value)
-    } else if (quizState.difficulty === 'Medium') {
+    } else if (difficulty === 'Medium') {
       setDoc(mediumLeaderboardRef, value)
     } else {
       console.log('hey')
@@ -67,58 +77,91 @@ const Quiz = () => {
     setDuration(timerClock)
   }
 
-
   const restartQuiz = () => {
     setDuration(0)
     setTimerClock(0)
   }
 
-
   return (
     <div className='quiz secondary page'>
-
-
       {quizState?.showResults && (
+
         <div className='results'>
-          <div className="congratulations">Congratulations</div>
-          <div className="results-info">
-            <h1>You have completed the quiz</h1>
-            <span>You got {quizState.correctAnswerCount} of {quizState.questions.length} correct. </span>
+          <div className="congratulations">
+            {score === 100 ? (
+              <>
+                <h1>Congratulations!</h1>
+                <p>You got a score of <span>{score} %</span> | <br /> <br />{correctAnswersCount} of {questionCount} correct.</p><br />
+              </>
+            ) : score > 80 ? (
+              <>
+                <h1>Nice Job!</h1>
+                <p>You got a score of <span>{score} %</span> | <br /> <br />{correctAnswersCount} of {questionCount} correct.</p><br />
+                <p> Visit the <NavLink to='/chords'>Chords Page</NavLink> to study the chords.</p>
+              </>
+
+            ) : score > 70 ? (
+              <>
+                <h1>Nice work </h1>
+                <p>You got a score of <span>{score} %</span> | <br /> <br />{correctAnswersCount} of {questionCount} correct.</p> <br />
+                <p> Visit the <NavLink to='/chords'>Chords Page</NavLink> to study the chords.</p>
+              </>
+            ) : score <= 70 ? (
+              <>
+                <h1>Better luck next time</h1>
+                <p>You got a score of <span>{score} %</span>  | <br /> <br />{correctAnswersCount} of {questionCount} correct.</p> <br />
+                <p> Visit the <NavLink to='/chords'>Chords Page</NavLink> to study the chords.</p>
+              </>
+            ) : null}
+
           </div>
-          <div className="restart">
-            <button onClick={() => { dispatch({ type: 'RESTART' }); restartQuiz() }}>Restart</button>
+
+          <div className="redirect">
+            <NavLink to='/leaderboard'>Leaderboard</NavLink>
+            <NavLink to='/chord_quiz' reloadDocument onClick={() => { dispatch({ type: 'RESTART' }); restartQuiz() }}>Restart</NavLink>
           </div>
-        </div>
+
+        </div >
       )}
 
 
-      {!quizState.showResults && (
+      {
+        !quizState.showResults && (
 
-        <div className='quiz-content'>
-          <div className="score">
-            <p>Question {quizState.currentQuestionIndex + 1} / {quizState.questions.length}
-            </p>
-          </div>
+          <div className='quiz-content'>
 
-          <Question />
+            <div className="quiz-controls mobile ">
+              <p className='timer'>{duration === 0 ? `Duration: ${timerClock} seconds` : `You finished in ${duration} seconds`} </p>
+              <div className="next-button">
+                {currentQuestionIndex === questionCount ? (
+                  <button onClick={() => { dispatch({ type: 'NEXT_QUESTION' }); checkLastQuestion() }}>Finish</button>
+                ) : (
+                  <button onClick={() => dispatch({ type: 'NEXT_QUESTION' })}>Next Question</button>
+                )}
+              </div>
 
-          <div className="quiz-controls primary">
-            <p className='timer'>{duration === 0 ? `Duration: ${timerClock} seconds` : `You finished in ${duration} seconds`} </p>
+            </div>
 
-            <div className="next-button">
-              {quizState.currentQuestionIndex + 1 === quizState.questions.length ? (
-                <button onClick={() => { dispatch({ type: 'NEXT_QUESTION' }); checkLastQuestion() }}>Finish</button>
-              ) : (
-                <button onClick={() => dispatch({ type: 'NEXT_QUESTION' })}>Next Question</button>
-              )}
+            <Question />
+
+            <div className="quiz-controls primary">
+              <p className='timer'>{duration === 0 ? `Duration: ${timerClock} seconds` : `You finished in ${duration} seconds`} </p>
+
+              <div className="next-button">
+                {currentQuestionIndex === questionCount ? (
+                  <button onClick={() => { dispatch({ type: 'NEXT_QUESTION' }); checkLastQuestion() }}>Finish</button>
+                ) : (
+                  <button onClick={() => dispatch({ type: 'NEXT_QUESTION' })}>Next Question</button>
+                )}
+              </div>
+
             </div>
 
           </div>
+        )
+      }
 
-        </div>
-      )}
-
-    </div>
+    </div >
   )
 }
 

@@ -75,11 +75,6 @@ const Profile = () => {
 
   }, [])
 
-
-
-
-
-
   return (
     <div className='page secondary'>
       <div className="profile">
@@ -107,8 +102,9 @@ const Profile = () => {
             if (i === 0)
               return (
                 <div className='result primary'>
-                  <p className='mode easy'>{difficulty}</p>
-                  <p className='score'>Score: <span className='accent'>{score} - {questionCount}</span></p>
+                  <div className="mode">
+                    <p className='easy'>{difficulty}</p>
+                  </div>                  <p className='score'>Score: <span className='accent'>{Math.floor(score / questionCount) * 100}%</span></p>
 
                   <p className='time'>Completed in: <span className='accent'>{duration} seconds</span></p>
                   {id === user.uid && (
@@ -122,8 +118,10 @@ const Profile = () => {
             if (i === 0)
               return (
                 <div className='result primary'>
-                  <p className='mode medium'>{difficulty}</p>
-                  <p className='score'>Score: <span className='accent'>{score} - {questionCount}</span></p>
+                  <div className="mode">
+                    <p className='medium'>{difficulty}</p>
+                  </div>
+                  <p className='score'>Score: <span className='accent'>{Math.floor(score / questionCount) * 100}%</span></p>
                   <p className='time '>Completed in: <span className='accent'>{duration} seconds</span></p>
                   {id === user.uid && (
                     <NavLink to='/lobby' className='accent'>Retry</NavLink>

@@ -5,6 +5,12 @@
 	display: flex;
 	gap: 1rem;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 50vh;
+	h1 {
+		font-size: 3rem;
+	}
 	p {
 		width: 40%;
 		font-size: 1.4rem;
@@ -17,6 +23,8 @@
 		gap: 1rem;
 		margin-top: 1rem;
 		align-items: center;
+		justify-content: center;
+		width: 40%;
 		.desktop {
 			@include sm() {
 				display: none;

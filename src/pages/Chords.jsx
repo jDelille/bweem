@@ -17,7 +17,7 @@ const Chords = () => {
 
   return (
     <div className='page secondary chord-page'>
-      <div className="controls primary">
+      <div className="controls">
         <h1> Choose a key</h1>
         <div className="keys">
           {keys.map(key => {
